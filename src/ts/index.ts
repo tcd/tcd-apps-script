@@ -1,4 +1,4 @@
-import { FOLDER_NAME } from "./constants"
+import { FOLDER_NAME } from "./lib/constants"
 
 const greeter = (person: string) => {
     return `pssst, ${person}, FOLDER_NAME is ${FOLDER_NAME}`
