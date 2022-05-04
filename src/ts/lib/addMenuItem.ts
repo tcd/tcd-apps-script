@@ -1,9 +1,9 @@
-import { MENU_NAME } from "."
+import { MENU_NAME } from "./constants"
 
 /**
  * When a new sheet is opened, add a menu for our functions
  */
-export const AddMenuItem = (name: string, functionName: string): void => {
+export const addMenuItem = (name: string, functionName: string): void => {
     const ss = SpreadsheetApp.getActiveSpreadsheet()
     const tsvMenuEntries = [{
         name: name,

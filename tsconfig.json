@@ -9,8 +9,9 @@
         ],
         "strict": true,
         "esModuleInterop": false,
-        "outDir": "dist",
-        "rootDir": "./"
+        // "outDir": "dist",
+        "rootDir": "./",
+        "emitDeclarationOnly": false,
     },
     "include": [
         "./src/ts/**/*.ts"

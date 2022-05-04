@@ -1,8 +1,12 @@
-import { FOLDER_NAME } from "./lib/constants"
+import { addMenuItem, saveAsTsv } from "./lib"
 
-const greeter = (person: string) => {
-    return `pssst, ${person}, FOLDER_NAME is ${FOLDER_NAME}`
+export { saveAsTsv }
+
+/**
+ * The event handler triggered when opening the spreadsheet.
+ * @param {GoogleAppsScript.Events.SheetsOnOpen} ) _event The onOpen event.
+ * @see https://developers.google.com/apps-script/guides/triggers#onopene
+ */
+export function onOpen(_event: GoogleAppsScript.Events.SheetsOnOpen) {
+    addMenuItem("Export as TSV", "saveAsTsv")
 }
-
-const user = "Grant"
-Logger.log(greeter(user))
