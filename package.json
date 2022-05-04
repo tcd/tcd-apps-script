@@ -12,6 +12,7 @@
         "url": "https://github.com/tcd/tcd-apps-script/issues"
     },
     "scripts": {
+        "build": "rollup --config rollup.config.ts --configPlugin typescript",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
