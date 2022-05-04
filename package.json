@@ -1,0 +1,21 @@
+{
+    "name": "tcd-apps-script",
+    "version": "0.0.0",
+    "author": "Clay Dunston",
+    "license": "MIT",
+    "homepage": "https://github.com/tcd/tcd-apps-script#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tcd/tcd-apps-script.git"
+    },
+    "bugs": {
+        "url": "https://github.com/tcd/tcd-apps-script/issues"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@google/clasp": "^2.4.1",
+        "@types/google-apps-script": "^1.0.47"
+    }
+}
