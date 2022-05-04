@@ -55,5 +55,5 @@ const convertRangeTotsvFile = sheet => {
 };
 
 function onOpen(_event) {
-    addMenuItem("Export as TSV", "saveAstsv");
+    addMenuItem("Export as TSV", "saveAsTsv");
 }
