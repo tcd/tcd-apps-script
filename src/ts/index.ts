@@ -8,5 +8,5 @@ export { saveAsTsv }
  * @see https://developers.google.com/apps-script/guides/triggers#onopene
  */
 export function onOpen(_event: GoogleAppsScript.Events.SheetsOnOpen) {
-    addMenuItem("Export as TSV", "saveAsTsv")
+    addMenuItem("Export as TSV 7", "saveAsTsv")
 }
