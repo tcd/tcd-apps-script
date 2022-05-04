@@ -1,6 +1,8 @@
+import { FOLDER_NAME } from "./constants"
+
 const greeter = (person: string) => {
-    return `Hello, ${person}!`;
+    return `pssst, ${person}, FOLDER_NAME is ${FOLDER_NAME}`
 }
 
-let user = 'Grant';
-Logger.log(greeter(user));
+const user = "Grant"
+Logger.log(greeter(user))
