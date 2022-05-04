@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "*.gs": "javascript",
+        ".claspignore": "gitignore",
     },
 }

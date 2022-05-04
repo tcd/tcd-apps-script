@@ -1,0 +1,11 @@
+.vscode
+ignore
+node_modules
+# src/
+# .clasp.json
+.editorconfig
+.gitignore
+# appsscript.json
+package-lock.json
+package.json
+README.md
