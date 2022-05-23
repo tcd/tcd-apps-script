@@ -1,6 +1,6 @@
-import { addMenuItem, saveAsTsv } from "./lib"
+import { addMenuItem, saveAsTsv, saveAsJson } from "./lib"
 
-export { saveAsTsv }
+export { saveAsTsv, saveAsJson }
 
 /**
  * The event handler triggered when opening the spreadsheet.
@@ -8,5 +8,6 @@ export { saveAsTsv }
  * @see https://developers.google.com/apps-script/guides/triggers#onopene
  */
 export function onOpen(_event: GoogleAppsScript.Events.SheetsOnOpen) {
-    addMenuItem("Export as TSV 7", "saveAsTsv")
+    addMenuItem("Export as TSV v7", "saveAsTsv")
+    addMenuItem("Export as JSON v1", "saveAsJson")
 }

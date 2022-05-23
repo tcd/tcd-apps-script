@@ -2,6 +2,11 @@
 
 [![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
 
+## Notes
+
+- A `Spreadsheet` is the parent that contains `Sheet`s.
+- A `GoogleAppsScript.Spreadsheet.Spreadsheet` is the parent that contains `GoogleAppsScript.Spreadsheet.Sheet`s.
+
 
 ## Links
 
@@ -13,3 +18,5 @@
 - Repos
     - [googleworkspace/apps-script-samples](https://github.com/googleworkspace/apps-script-samples)
     - [google/clasp](https://github.com/google/clasp)
+- Misc.
+    - [A1 Notation](https://developers.google.com/sheets/api/guides/concepts)
