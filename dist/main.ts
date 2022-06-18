@@ -1,9 +1,3 @@
-const NEWLINE = "\n";
-
-const MENU_NAME = "tcd";
-
-const FOLDER_ID = "1Vhw0UvGogfuhTko2Bc9Dql807_YB3uHn";
-
 const addMenuItem = (name, functionName) => {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const tsvMenuEntries = [ {
@@ -11,6 +5,25 @@ const addMenuItem = (name, functionName) => {
         functionName: functionName
     } ];
     ss.addMenu(MENU_NAME, tsvMenuEntries);
+};
+
+const NEWLINE = "\n";
+
+const MENU_NAME = "tcd";
+
+const FOLDER_ID = "1Vhw0UvGogfuhTko2Bc9Dql807_YB3uHn";
+
+const timestamp = (time = null) => {
+    time !== null && time !== void 0 ? time : time = new Date;
+    const year = time.getFullYear();
+    const month = (time.getMonth() + 1).toString().padStart(2, "0");
+    const day = time.getDate().toString().padStart(2, "0");
+    const minute = time.getMinutes().toString().padStart(2, "0");
+    const second = time.getSeconds().toString().padStart(2, "0");
+    const _hour = time.getHours();
+    const meridiemIndicator = _hour > 12 ? "PM" : "AM";
+    const hour = ((_hour + 11) % 12 + 1).toString().padStart(2, "0");
+    return `${year}-${month}-${day}--${hour}-${minute}-${second}-${meridiemIndicator}`;
 };
 
 const convertRangeToTsvFile = sheet => {
@@ -48,7 +61,7 @@ const convertRangeToTsvFile = sheet => {
 
 const saveAsTsv = () => {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const newFolderName = ss.getName().toLowerCase().replace(/   /g, "_") + "_tsv_" + (new Date).getTime();
+    const newFolderName = ss.getName().toLowerCase().replace(/   /g, "_") + "_tsv_" + timestamp();
     const parentFolder = DriveApp.getFolderById(FOLDER_ID);
     const folder = parentFolder.createFolder(newFolderName);
     const sheets = ss.getSheets();

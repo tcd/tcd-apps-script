@@ -1,4 +1,4 @@
-import { FOLDER_ID } from ".."
+import { FOLDER_ID, timestamp } from ".."
 import { convertRangeToTsvFile } from "."
 
 /*
@@ -14,7 +14,7 @@ import { convertRangeToTsvFile } from "."
  */
 export const saveAsTsv = (): void => {
     const ss: GoogleAppsScript.Spreadsheet.Spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
-    const newFolderName = ss.getName().toLowerCase().replace(/   /g,"_") + "_tsv_" + new Date().getTime()
+    const newFolderName = ss.getName().toLowerCase().replace(/   /g,"_") + "_tsv_" + timestamp()
     const parentFolder = DriveApp.getFolderById(FOLDER_ID)
     // create a folder from the name of the spreadsheet
     const folder = parentFolder.createFolder(newFolderName)
