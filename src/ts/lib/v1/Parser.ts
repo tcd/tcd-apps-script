@@ -1,4 +1,4 @@
-import { isEven } from ".."
+import { isEven, columnToLetter } from ".."
 
 // https://developers.google.com/apps-script/reference/spreadsheet/range
 export class Parser {
@@ -8,6 +8,7 @@ export class Parser {
     public data: any[][]
     public formulas: string[][]
     public result: any
+    public resultMap: any
 
     private _rowCount: number
     // private _cellCount: number
@@ -24,6 +25,8 @@ export class Parser {
         this._currentRowIndex  = 0
         // this._currentCellIndex = 0
         this.result = {}
+        this.resultMap = {}
+
         this.sheet  = sheet
 
         this.range = this.sheet?.getDataRange()
@@ -53,38 +56,55 @@ export class Parser {
             }
             this._currentRowIndex++
         }
-        return this.stringifyResult()
+        return this.stringifyResults()
     }
 
-    private stringifyResult(): string {
-        if (this.result == null) {
-            return "{}"
-        }
-        if (this.result == undefined) {
-            return "{}"
-        }
-        return JSON.stringify(this.result)
+    private stringifyResults(): string {
+        if (this.result == null)      { return "{}" }
+        if (this.result == undefined) { return "{}" }
+        return JSON.stringify({
+            keys: this.resultMap,
+            values: this.result,
+        })
     }
 
     private addGroupToResult(): any {
-        const result: any = {}
+        const result:    any = {}
+        const resultMap: any = {}
+
         const keys   = this.data[this._currentRowIndex]
         const values = this.data[this._currentRowIndex + 1]
+
         const keyLength = keys?.length
         if (!keyLength) {
-            console.log({
-                message: "no keys",
-            })
+            console.log({ message: "no keys" })
             return
         }
-        for (let i = 0; i < keyLength; i++) {
-            const key   = keys[i]
-            const value = values[i]
+
+        for (let column = 0; column < keyLength; column++) {
+            const key   = keys[column]
+            const value = values[column]
             result[key] = value
+            if ((key?.length ?? 0 ) > 0) {
+                const A1 = `${columnToLetter(column + 1)}${this._currentRowIndex + 1}`
+                console.log({
+                    // currentRowIndex: this._currentRowIndex,
+                    // column,
+                    A1,
+                    key,
+                    // value,
+                })
+                resultMap[A1] = key
+            }
         }
+
         this.result = {
             ...this.result,
             ...result,
+        }
+        this.resultMap = {
+            ...this.resultMap,
+            ...resultMap,
         }
     }
 }

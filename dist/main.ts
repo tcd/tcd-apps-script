@@ -1,3 +1,14 @@
+const columnToLetter = column => {
+    let letter = "";
+    let temp;
+    while (column > 0) {
+        temp = (column - 1) % 26;
+        letter = String.fromCharCode(temp + 65) + letter;
+        column = (column - temp - 1) / 26;
+    }
+    return letter;
+};
+
 const addMenuItem = (name, functionName) => {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const tsvMenuEntries = [ {
@@ -82,6 +93,7 @@ class Parser {
         this._errorMessage = "";
         this._currentRowIndex = 0;
         this.result = {};
+        this.resultMap = {};
         this.sheet = sheet;
         this.range = (_a = this.sheet) === null || _a === void 0 ? void 0 : _a.getDataRange();
         this.formulas = (_b = this.range) === null || _b === void 0 ? void 0 : _b.getFormulas();
@@ -105,19 +117,24 @@ class Parser {
             }
             this._currentRowIndex++;
         }
-        return this.stringifyResult();
+        return this.stringifyResults();
     }
-    stringifyResult() {
+    stringifyResults() {
         if (this.result == null) {
             return "{}";
         }
         if (this.result == undefined) {
             return "{}";
         }
-        return JSON.stringify(this.result);
+        return JSON.stringify({
+            keys: this.resultMap,
+            values: this.result
+        });
     }
     addGroupToResult() {
+        var _a;
         const result = {};
+        const resultMap = {};
         const keys = this.data[this._currentRowIndex];
         const values = this.data[this._currentRowIndex + 1];
         const keyLength = keys === null || keys === void 0 ? void 0 : keys.length;
@@ -127,31 +144,40 @@ class Parser {
             });
             return;
         }
-        for (let i = 0; i < keyLength; i++) {
-            const key = keys[i];
-            const value = values[i];
+        for (let column = 0; column < keyLength; column++) {
+            const key = keys[column];
+            const value = values[column];
             result[key] = value;
+            if (((_a = key === null || key === void 0 ? void 0 : key.length) !== null && _a !== void 0 ? _a : 0) > 0) {
+                const A1 = `${columnToLetter(column + 1)}${this._currentRowIndex + 1}`;
+                console.log({
+                    A1: A1,
+                    key: key
+                });
+                resultMap[A1] = key;
+            }
         }
         this.result = {
             ...this.result,
             ...result
+        };
+        this.resultMap = {
+            ...this.resultMap,
+            ...resultMap
         };
     }
 }
 
 const saveAsJson = () => {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const newFolderName = ss.getName().toLowerCase().replace(/   /g, "_") + "_json_" + timestamp();
     const parentFolder = DriveApp.getFolderById(FOLDER_ID);
-    const folder = parentFolder.createFolder(newFolderName);
     const sheet = ss.getActiveSheet();
-    const fileName = `${sheet.getName()}.json`;
+    const fileName = `${sheet.getName()}__${timestamp()}.json`;
     const content = new Parser(sheet).process();
-    console.log(content);
-    folder.createFile(fileName, content);
-    Browser.msgBox(`Files are waiting in a folder named ${parentFolder}/${newFolderName}`);
+    parentFolder.createFile(fileName, content);
+    Browser.msgBox(`File written: '${parentFolder}/${fileName}'`);
 };
 
 function onOpen(_event) {
-    addMenuItem("Export as JSON v3", "saveAsJson");
+    addMenuItem("Export as JSON v10", "saveAsJson");
 }

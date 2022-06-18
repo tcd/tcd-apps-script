@@ -16,5 +16,5 @@ export {
  */
 export function onOpen(_event: GoogleAppsScript.Events.SheetsOnOpen) {
     // addMenuItem("Export as TSV v7", "saveAsTsv")
-    addMenuItem("Export as JSON v3", "saveAsJson")
+    addMenuItem("Export as JSON v10", "saveAsJson")
 }
