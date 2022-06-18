@@ -27,7 +27,7 @@ export const convertRangeToTsvFile = (sheet: GoogleAppsScript.Spreadsheet.Sheet)
 
                 const formula = formulas[row][col]
                 if (formula !== "") {
-                    cell = formula
+                    cell = formula ?? ""
                 }
                 // if (cell.toString().indexOf("\t") != -1) {
                 // }

@@ -15,6 +15,7 @@ export const saveAsJson = (): void => {
     const sheet = ss.getActiveSheet()
     const fileName = `${sheet.getName()}.json`
     const content = new Parser(sheet).process()
+    console.log(content)
     folder.createFile(fileName, content)
 
     Browser.msgBox(`Files are waiting in a folder named ${parentFolder}/${newFolderName}`)

@@ -13,5 +13,5 @@ export const timestamp = (time: Date | null = null): string => {
 
     const hour = ((_hour + 11) % 12 + 1).toString().padStart(2, "0")
 
-    return `${year}-${month}-${day}--${hour}-${minute}-${second}-${meridiemIndicator}`
+    return `${year}-${month}-${day}_${hour}-${minute}-${second}_${meridiemIndicator}`
 }

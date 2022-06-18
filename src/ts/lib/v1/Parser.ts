@@ -53,15 +53,32 @@ export class Parser {
             }
             this._currentRowIndex++
         }
+        return this.stringifyResult()
+    }
+
+    private stringifyResult(): string {
+        if (this.result == null) {
+            return "{}"
+        }
+        if (this.result == undefined) {
+            return "{}"
+        }
         return JSON.stringify(this.result)
     }
 
     private addGroupToResult(): any {
         const result: any = {}
         const keys   = this.data[this._currentRowIndex]
-        const values = this.formulas[this._currentRowIndex + 1]
-        for (let i = 0; i < keys.length; i++) {
-            const key = keys[i]
+        const values = this.data[this._currentRowIndex + 1]
+        const keyLength = keys?.length
+        if (!keyLength) {
+            console.log({
+                message: "no keys",
+            })
+            return
+        }
+        for (let i = 0; i < keyLength; i++) {
+            const key   = keys[i]
             const value = values[i]
             result[key] = value
         }
