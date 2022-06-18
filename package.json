@@ -22,6 +22,7 @@
         "@types/google-apps-script": "^1.0.47",
         "@typescript-eslint/eslint-plugin": "^5.16.0",
         "@typescript-eslint/parser": "^5.16.0",
+        "@typescript-eslint/typescript-estree": "^5.28.0",
         "eslint": "^8.14.0",
         "rollup": "^2.71.1",
         "rollup-plugin-terser": "^7.0.2",
