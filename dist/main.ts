@@ -4,6 +4,8 @@ const MENU_NAME = "tcd";
 
 const FOLDER_ID = "1Vhw0UvGogfuhTko2Bc9Dql807_YB3uHn";
 
+const isEven = n => n == 0 || n % 2 == 0;
+
 const addMenuItem = (name, functionName) => {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const tsvMenuEntries = [ {
@@ -45,8 +47,6 @@ const convertRangeToTsvFile = sheet => {
         return "";
     }
 };
-
-const isEven = n => n == 0 || n % 2 == 0;
 
 class Parser {
     constructor(sheet) {

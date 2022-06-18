@@ -1,4 +1,4 @@
-import { MENU_NAME } from "./constants"
+import { MENU_NAME } from ".."
 
 /**
  * When a new sheet is opened, add a menu for our functions

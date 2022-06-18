@@ -19,5 +19,6 @@
     ],
     "exclude": [
         "./src/ts/@types/google-apps-script.spreadsheet.d.ts",
+        // "dist",
     ]
 }

@@ -10,7 +10,6 @@ export const cleanCell = (cell: string): string => {
     return `\"${cleaned}\"`
 }
 
-
 interface ConvertRowsToObjectOptions {
     row_1: any[]
     row_2: any[]

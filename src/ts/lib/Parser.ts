@@ -1,6 +1,4 @@
-import {
-    isEven,
-} from "./isEven"
+import { isEven } from "./util/is-even"
 
 // https://developers.google.com/apps-script/reference/spreadsheet/range
 export class Parser {
