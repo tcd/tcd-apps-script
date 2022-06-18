@@ -1,4 +1,4 @@
-import { NEWLINE } from "./util"
+import { NEWLINE } from ".."
 
 /**
  * Convert a google sheet to TSV file content.

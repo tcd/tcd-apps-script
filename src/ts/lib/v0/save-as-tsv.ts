@@ -1,5 +1,5 @@
-import { FOLDER_ID } from "./util"
-import { convertRangeToTsvFile } from "./convertRangeToTsvFile"
+import { FOLDER_ID } from ".."
+import { convertRangeToTsvFile } from "."
 
 /*
  * script to export data in all sheets in the current spreadsheet as individual tsv files

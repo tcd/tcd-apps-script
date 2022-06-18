@@ -1,7 +1,6 @@
 // https://developers.google.com/apps-script/reference/spreadsheet/range
 
-const isEven = (n: number) => (n == 0) || (n % 2 == 0)
-const isOdd  = (n: number) => (n % 2 == 1)
+import { isEven, isOdd } from ".."
 
 export const cleanCell = (cell: string): string => {
     const cleaned = cell
