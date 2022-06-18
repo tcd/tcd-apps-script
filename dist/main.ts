@@ -149,7 +149,7 @@ class Parser {
             const value = values[column];
             result[key] = value;
             if (((_a = key === null || key === void 0 ? void 0 : key.length) !== null && _a !== void 0 ? _a : 0) > 0) {
-                const A1 = `${columnToLetter(column + 1)}${this._currentRowIndex + 1}`;
+                const A1 = `${columnToLetter(column + 1)}${this._currentRowIndex + 2}`;
                 console.log({
                     A1: A1,
                     key: key
@@ -179,5 +179,5 @@ const saveAsJson = () => {
 };
 
 function onOpen(_event) {
-    addMenuItem("Export as JSON v10", "saveAsJson");
+    addMenuItem("Export as JSON v11", "saveAsJson");
 }

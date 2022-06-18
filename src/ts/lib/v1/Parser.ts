@@ -86,7 +86,7 @@ export class Parser {
             const value = values[column]
             result[key] = value
             if ((key?.length ?? 0 ) > 0) {
-                const A1 = `${columnToLetter(column + 1)}${this._currentRowIndex + 1}`
+                const A1 = `${columnToLetter(column + 1)}${this._currentRowIndex + 2}`
                 console.log({
                     // currentRowIndex: this._currentRowIndex,
                     // column,
